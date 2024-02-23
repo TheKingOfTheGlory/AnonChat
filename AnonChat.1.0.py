@@ -20,7 +20,7 @@ else:
 
 
 print("""
-\33[31m    
+\33[1;31m    
 :::'###::::'##::: ##::'#######::'##::: ##::'######::'##::::'##::::'###::::'########:::::::'##::::::::::'#####:::
 ::'## ##::: ###:: ##:'##.... ##: ###:: ##:'##... ##: ##:::: ##:::'## ##:::... ##..::::::'####:::::::::'##.. ##::
 :'##:. ##:: ####: ##: ##:::: ##: ####: ##: ##:::..:: ##:::: ##::'##:. ##::::: ##::::::::.. ##::::::::'##:::: ##:
@@ -33,7 +33,7 @@ print("""
 $ AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall USE NGROK !! $
 # SUALI OLAN TG YAZA BILER NGROKLA LOCAL XARICI CHAT ACA BILERSINIZ #
 # OUR LEGAL TEAM -- TURANCYBERTEAM -- Want To Join Write Us #  
-\33[0m      
+\33[1;0m      
 """)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -48,17 +48,17 @@ def receive():
             else:
                 print(message)
         except: 
-            print("[-] SERVER DAYANDI !!")
+            print("\33[1;31m[-]\33[1;0m SERVER DAYANDI !!")
             client.close()
             break
 
 def write():
     while True:
         try:
-            message = '\33[31m{}:\33[0m {}'.format(nickname, input('\n'))
+            message = '\33[1;31m{}:\33[1;0m {}'.format(nickname, input('\n'))
             client.send(message.encode('ascii'))
         except Exception as w:
-            print("[-] SISTEM NE YAZIQKI TURK VE AZERBAYCANCA KARAKTER DESTEKLEMIR ")
+            print("\33[1;31m[-]\33[1;0m SISTEM NE YAZIQKI TURK VE AZERBAYCANCA KARAKTER DESTEKLEMIR ")
 
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
