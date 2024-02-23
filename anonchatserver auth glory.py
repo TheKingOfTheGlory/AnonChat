@@ -7,8 +7,16 @@ import platform
 
 # AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall #
 
-print("[$] AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall") 
-print("[#] HELEKI BAGLANTI YOXDUR BAGLANTI GOZLENILIR ...")
+if platform.system() == "Linux":
+    os.system("clear")       
+elif platform.system() == "Windows":
+    os.system("cls")
+else:
+    ("\33[1;31m[-]\33[1;0m SIZIN OPERATING SYSTEMINIZ DESTEKLENMIR !!")
+    exit()
+
+print("\33[1;31m[$] AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall\33[1;0m") 
+print("\33[1;33m[#] HELEKI BAGLANTI YOXDUR BAGLANTI GOZLENILIR ...\33[1;0m")
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))
@@ -31,7 +39,7 @@ def handle(client):
             clients.remove(client)
             client.close()
             nickname = nicknames[index]
-            broadcast('\33[31m{}\33[0m Getdi !'.format(nickname).encode('ascii'))
+            broadcast('\33[1;31m{}\33[1;31m Getdi !'.format(nickname).encode('ascii'))
             nicknames.remove(nickname)
             break
 
@@ -43,32 +51,23 @@ def receive():
         elif platform.system() == "Windows":
              os.system("cls")
         else:
-            ("[-]SIZIN OPERATING SYSTEMINIZ DESTEKLENMIR !!")
+            ("\33[1;31m[-]\33[1;0m SIZIN OPERATING SYSTEMINIZ DESTEKLENMIR !!")
             exit()
 
-        print("[$] AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall")
-        print("[+] CIHAZ BAGLANTISI QEBUL EDILDI !!")
+        print("\33[1;31m[$] AUTHOR THE KING OF THE GLORY TELEGRAM -- https://t.me/TheKingOfTheGloryOfficall\33[1;0m") 
+        print("\33[1;33m[#] HELEKI BAGLANTI YOXDUR BAGLANTI GOZLENILIR ...\33[1;0m")
     
-        print("[+] Bununla Qosuldu {}".format(str(address)))
+        print("\33[1;32m[+]\33[1;0m Bununla Qosuldu {}".format(str(address)))
         client.send('NICK'.encode('ascii'))
         nickname = client.recv(1024).decode('ascii')
         nicknames.append(nickname)
         clients.append(client)
 
-        print("[+] Nickname budur {}".format(nickname))
-        broadcast("\33[31m{}\33[0m Chata Qatildi ! ".format(nickname).encode('ascii'))
-        client.send('\n[+] Servere Qosuldunuz !'.encode('ascii'))
+        print("\33[1;32m[+]\33[1;0m Nickname budur {}".format(nickname))
+        broadcast("\33[32m{}\33[0m Chata Qatildi ! ".format(nickname).encode('ascii'))
+        client.send('\n\33[1;32m[+]\33[1;0m Servere Qosuldunuz !'.encode('ascii'))
 
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
 
 receive()
-
-
-    
-
-
-
-
-
-    
