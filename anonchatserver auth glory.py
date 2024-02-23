@@ -63,9 +63,9 @@ def receive():
         nicknames.append(nickname)
         clients.append(client)
 
-        print("\33[1;31m[+]\33[1;0m Nickname budur {}".format(nickname))
+        print("\33[1;32m[+]\33[1;0m Nickname budur {}".format(nickname))
         broadcast("\33[31m{}\33[0m Chata Qatildi ! ".format(nickname).encode('ascii'))
-        client.send('\n\33[1;31m[+]\33[1;0m Servere Qosuldunuz !'.encode('ascii'))
+        client.send('\n\33[1;32m[+]\33[1;0m Servere Qosuldunuz !'.encode('ascii'))
 
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
